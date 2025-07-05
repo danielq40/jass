@@ -17,22 +17,20 @@ function initJassMobileMenu() {
   const openBtn = document.querySelector('[jass-mobile-menu="open"]');
   const closeBtn = document.querySelector('[jass-mobile-menu="close"]');
 
-  if (!menu || !openBtn || !closeBtn) return;
+  if (!menu || !openBtn || !closeBtn) {
+    console.warn('JASS menu elements missing');
+    return;
+  }
 
-  // Default: menu hidden
   menu.style.display = 'none';
 
   openBtn.addEventListener('click', () => {
     menu.style.display = 'flex';
-    openBtn.setAttribute('aria-expanded', 'true');
   });
 
   closeBtn.addEventListener('click', () => {
     menu.style.display = 'none';
-    openBtn.setAttribute('aria-expanded', 'false');
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initJassMobileMenu();
-});
+document.addEventListener('DOMContentLoaded', initJassMobileMenu);
